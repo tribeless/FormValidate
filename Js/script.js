@@ -1,8 +1,9 @@
 
 //retrive all users info
 validateForm();
+checkUsersLoginDetails();
 $(document).on("DOMContentLoaded",retrieveUsersDetais);
-$(".login").on("click", checkUsersLoginDetails);
+//$(".login").on("click", checkUsersLoginDetails);
 
 function retrieveUsersDetais(){
     let usersDetails;
@@ -16,7 +17,7 @@ function retrieveUsersDetais(){
 }
 
 //validate users details on try login
-function checkUsersLoginDetails(event){
+function checkUsersLoginDetails(){
     
      let usersDetails;
      if (localStorage.getItem("usersdetails")===null){
@@ -25,7 +26,8 @@ function checkUsersLoginDetails(event){
      else{
          usersDetails = JSON.parse(localStorage.getItem("usersdetails"));
      }
-     
+     $("form").submit((e) => {
+         e.preventDefault();
      var loginDetails = usersDetails;
      var username = $(".loginusername").val();
      var password = $(".loginpassword").val();
@@ -37,17 +39,18 @@ function checkUsersLoginDetails(event){
            if(vv.username===username && vv.password===password)
            {
                 alert("Login successful");
-                
+                return false;
              }
              else{
                 alert("Failed, try again");
-                
+                return false;
             }
           
       }
-      $(".username").val("");
-      $(".password").val("");
+      $(".loginusername").val("");
+      $(".loginpassword").val("");
     return true;
+})
 
 }
 
