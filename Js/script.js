@@ -25,26 +25,29 @@ function checkUsersLoginDetails(event){
      else{
          usersDetails = JSON.parse(localStorage.getItem("usersdetails"));
      }
-     console.log(usersDetails)
+     
      var loginDetails = usersDetails;
-    var username = $(".loginusername").val();
+     var username = $(".loginusername").val();
      var password = $(".loginpassword").val();
      
       for(var i=0;i<loginDetails.length;i++){
           var vv = loginDetails[i];
+         
 
-           if(vv.username===username && vv.password===password){
-           alert("Login successful");
-           return false;
-       }
-       else{
-          alert("Failed, try again");
-          return false;
-       }
-          $(".username").val("");
-          $(".password").val("");
+           if(vv.username===username && vv.password===password)
+           {
+                alert("Login successful");
+                
+             }
+             else{
+                alert("Failed, try again");
+                
+            }
+          
       }
-    
+      $(".username").val("");
+      $(".password").val("");
+    return true;
 
 }
 
@@ -54,7 +57,7 @@ function validateForm()
     $("form").submit((e) => {
     e.preventDefault();
     var $userName = $(".username").val();
-        var $pnumber = $(".phonenumber").val();
+    var $pnumber = $(".phonenumber").val();
     var $password = $(".password").val();
     var $confirmPassword = $(".confirmpassword").val();
     var $email = $(".email").val();

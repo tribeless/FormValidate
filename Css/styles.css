@@ -77,7 +77,7 @@
     background: var(--right-cl-color);
     text-align: center;
 }
-right-header-text{
+.right-header-text{
     color:#2d3436;
     font-family:var(--sub-family);
 }

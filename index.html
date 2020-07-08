@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+        integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="Css/styles.css">
+</head>
+<body>
+
+    <section class="landing-page">
+        <div class="row">
+            <div class="col-md-6 left-sec ">
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                
+                    <h1 class="current-page">Sign In</h1>
+                    
+                
+            </div>
+            <div class="col-md-6 right-sec">
+                <div class="tab-btns">
+                    <button class="btn-btn" onclick="openTab('signup')">Sign Up</button>
+                    <button class="btn-btn" onclick="openTab('login')">Log In</button>
+                </div>
+               <div id="signup" class="tab">
+                    <h1 class="right-header-text">Sign Up</h1>
+                    <div class="error-message"></div>
+                    <form action="">
+                        <input type="text"placeholder="username" class="username">
+                        <input type="number" placeholder="phone number" class="phonenumber">
+                        <input type="password" placeholder="password" class="password">
+                        <input type="password" placeholder="confirm password" class="confirmpassword">
+                        <input type="email" placeholder="email" class="email">
+                        <button type="submit" class="submit-btn">Sign Up</button>
+                    </form>
+               </div>
+               <div style="display: none;" id="login" class="tab">
+                    <h1 class="right-header-text">Log In</h1>
+                   <form action="">
+                    <input type="text" placeholder="username" class="loginusername">
+                    <input type="password" placeholder="password" class="loginpassword">
+                    <button class="login">Log In</button>
+                   </form>
+               </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="Js/script.js"></script>
+</body>
+</html>
