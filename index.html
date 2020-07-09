@@ -25,28 +25,31 @@
             </div>
             <div class="col-md-6 right-sec">
                 <div class="tab-btns">
-                    <button class="btn-btn" onclick="openTab('signup')">Sign Up</button>
-                    <button class="btn-btn" onclick="openTab('login')">Log In</button>
+                    <button class="btn-btn active" id="hao" onclick="openTab('signup')">Sign Up</button>
+                    <button class="btn-btn" id="hoa" onclick="openTab('login')">Log In</button>
                 </div>
                <div id="signup" class="tab">
                     <h1 class="right-header-text">Sign Up</h1>
                     <div class="error-message"></div>
-                    <form action="">
+                    <form action="" >
                         <input type="text"placeholder="username" class="username">
                         <input type="number" placeholder="phone number" class="phonenumber">
-                        <input type="password" placeholder="password" class="password">
-                        <input type="password" placeholder="confirm password" class="confirmpassword">
+                        <input type="password" placeholder="password" class="password pwd"><button type="button" class="eye-open-close"><i
+                            class="fas fa-eye move-right"></i></button>
+                        <input type="password" placeholder="confirm password" class="confirmpassword pwd">
                         <input type="email" placeholder="email" class="email">
                         <button type="submit" class="submit-btn">Sign Up</button>
                     </form>
                </div>
                <div style="display: none;" id="login" class="tab">
                     <h1 class="right-header-text">Log In</h1>
-                   <form action="">
-                    <input type="text" placeholder="username" class="loginusername">
-                    <input type="password" placeholder="password" class="loginpassword">
-                    <button class="login" type="submit">Log In</button>
-                   </form>
+                    <div class="login-message"></div>
+                    <form action="" class="login-form">
+                        <input type="text" placeholder="username" class="loginusername">
+                        <input type="password" placeholder="password" class="loginpassword pwd"><button type="button" class="open-close"><i
+                                class="fas fa-eye move-right"></i></button>
+                        <button class="login" type="submit">Log In</button>
+                    </form>
                </div>
             </div>
         </div>

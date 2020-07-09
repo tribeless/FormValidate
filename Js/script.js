@@ -2,8 +2,9 @@
 //retrive all users info
 validateForm();
 checkUsersLoginDetails();
-$(document).on("DOMContentLoaded",retrieveUsersDetais);
-//$(".login").on("click", checkUsersLoginDetails);
+document.addEventListener("DOMContentLoaded", retrieveUsersDetais);
+$(".eye-open-close").on("click",showHide);
+$(".open-close").on("click",lnOpenHide);
 
 function retrieveUsersDetais(){
     let usersDetails;
@@ -26,46 +27,54 @@ function checkUsersLoginDetails(){
      else{
          usersDetails = JSON.parse(localStorage.getItem("usersdetails"));
      }
-     $("form").submit((e) => {
-         e.preventDefault();
-     var loginDetails = usersDetails;
-     var username = $(".loginusername").val();
-     var password = $(".loginpassword").val();
-     
-      for(var i=0;i<loginDetails.length;i++){
-          var vv = loginDetails[i];
-         
-
-           if(vv.username===username && vv.password===password)
-           {
-                alert("Login successful");
-                return false;
-             }
-             else{
-                alert("Failed, try again");
-                return false;
-            }
+    var loginDetails = usersDetails;
+        $("form").submit(e => {
+            e.preventDefault();
+            
+            var username = $(".loginusername").val();
+            var password = $(".loginpassword").val();
+            
+            
+            for(var i=0;i<loginDetails.length;i++){
+                var vv = loginDetails[i];
+               // var users = {logDet:vv};
+                //console.log(loginDetails[i].username)
+                if (username === vv.username && password === vv.password)
+                {
+                   // alert("Working")
+                    $(".login-message").html("Login successful").fadeToggle(500);
+                    $(".loginusername").val("");
+                    $(".loginpassword").val("");
+                    return false;
+                    }
+                    else{
+                   // alert("not")
+                    $(".login-message").html("Failed, try again").fadeToggle(500);  
+                    $(".loginusername").val("");
+                    $(".loginpassword").val("");
+                    
+                    }
           
       }
-      $(".loginusername").val("");
-      $(".loginpassword").val("");
-    return true;
+            return true;
+            
+            
 })
-
+    
 }
 
 function validateForm()
 {
-
+    
     $("form").submit((e) => {
-    e.preventDefault();
-    var $userName = $(".username").val();
-    var $pnumber = $(".phonenumber").val();
-    var $password = $(".password").val();
-    var $confirmPassword = $(".confirmpassword").val();
-    var $email = $(".email").val();
-
-    var errorMessage = "";
+        e.preventDefault();
+        var $userName = $(".username").val();
+        var $pnumber = $(".phonenumber").val();
+        var $password = $(".password").val();
+        var $confirmPassword = $(".confirmpassword").val();
+        var $email = $(".email").val();
+       
+        var errorMessage = "";
 
     var myUsersValues = {
         username: $userName,
@@ -100,7 +109,7 @@ function validateForm()
         return false;
     }
     else {
-        $(".error-message").html("");
+        $(".error-message").html("Log in please").fadeToggle(3000);
     }
         $(".phonenumber").val("");
         $(".username").val("");
@@ -132,8 +141,70 @@ function addUsersToLocalStorage(user){
 //creating a tabbed view
 function openTab(tab){
     var openTab = document.querySelectorAll(".tab");
+    var clickedBtn = document.querySelectorAll(".btn-btn");
+   
     for(var i=0;i<openTab.length;i++){
         openTab[i].style.display = "none";
     }
     document.getElementById(tab).style.display = "block";
+
+    for (var y = 0; y < clickedBtn.length; y++) {
+        if (clickedBtn[y].className==="btn-btn") {
+            clickedBtn[y].classList.add("active");
+            document.querySelector(".current-page").innerHTML="Log In";
+            
+        }
+        else {
+            clickedBtn[y].classList.remove("active");
+            document.querySelector(".current-page").innerHTML = "Sign Up";
+            
+        }
+
+    }
+    retrieveUsersDetais();
+  
+}
+
+//function to hide/show password
+function showHide(e){
+    var btnBtn = e.target;
+    var $reveal = $(".eye-open-close");
+    
+     var hold = btnBtn.parentElement.parentElement;
+     var holdbtn = hold.children[2];
+     var holdch = document.querySelector(".confirmpassword");
+    
+     $reveal.find("i").remove();
+     
+    
+         if(holdbtn.getAttribute("type")==="password" && holdch.getAttribute("type")==="password" ){
+             holdbtn.setAttribute("type","text");
+             holdch.setAttribute("type","text");
+             $reveal.html($("<i/>", { class: "far fa-eye-slash" }));
+         }
+           
+         else{
+             holdbtn.setAttribute("type","password");
+             holdch.setAttribute("type", "password");
+             $reveal.html($("<i/>", { class: "fas fa-eye" }));
+         }
+   // retrieveUsersDetais();
+}
+
+function lnOpenHide(e){
+ 
+    var btn = e.target;
+    var $reveal = $(".open-close");
+    var hold = btn.parentElement.parentElement;
+    var holdBt = hold.children[1];
+    $reveal.find("i").remove();
+    if(holdBt.getAttribute("type")==="password"){
+        holdBt.setAttribute("type","text");
+        $reveal.html($("<i/>", { class: "far fa-eye-slash" }));
+    }
+    else{
+        holdBt.setAttribute("type","password");
+        $reveal.html($("<i/>", { class: "fas fa-eye" }));
+
+    }
 }
