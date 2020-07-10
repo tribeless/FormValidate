@@ -42,7 +42,8 @@ function checkUsersLoginDetails(){
                 if (username === vv.username && password === vv.password)
                 {
                    // alert("Working")
-                    $(".login-message").html("Login successful").fadeToggle(500);
+                    $(".login-message").html("Login successful").css("color","green").fadeToggle(500);
+                    
                     $(".loginusername").val("");
                     $(".loginpassword").val("");
                     return false;
